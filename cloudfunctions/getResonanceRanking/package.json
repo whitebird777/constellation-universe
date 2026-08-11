@@ -1,0 +1,9 @@
+{
+  "name": "getResonanceRanking",
+  "version": "1.0.0",
+  "description": "星座共鸣 — 统计某星座标签排名",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

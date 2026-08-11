@@ -1,0 +1,147 @@
+<!-- index.wxml — 星座联盟 · 功能入口大厅 -->
+<view class="home">
+
+  <view class="home-bg">
+    <view class="bg-nebula bg-nebula--L"></view>
+    <view class="bg-nebula bg-nebula--R"></view>
+    <view class="bg-galaxy"></view>
+    <view wx:for="{{brightStars}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+    <view wx:for="{{mediumStars}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+    <view wx:for="{{dimStars}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+    <view wx:for="{{distantStars}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+    <view wx:for="{{dust}}" wx:key="i" class="bg-dust" style="{{item.s}}"></view>
+  </view>
+
+  <!-- Canvas 流星层 -->
+  <canvas type="2d" id="meteorCanvas" class="meteor-canvas"></canvas>
+
+  <view class="home-main" style="padding-top:calc(40rpx + {{statusBarHeight}}px);">
+
+    <!-- 标题 -->
+    <view class="home-header">
+      <view class="header-title">{{welcomeTitle}}</view>
+      <view class="header-sub">{{welcomeSub}}</view>
+    </view>
+
+    <!-- 保留的快捷入口 -->
+    <view class="home-quick-row">
+      <view class="quick-entry" bindtap="onIdentity">
+        <view class="quick-icon">🛡️</view>
+        <view class="quick-label">星球档案</view>
+      </view>
+      <view class="quick-entry" bindtap="onTimeline">
+        <view class="quick-icon">📖</view>
+        <view class="quick-label">宇宙日志</view>
+      </view>
+    </view>
+
+    <!-- 每日星光打卡 -->
+    <view class="checkin-card {{checkinDone ? 'checkin-done' : ''}}" bindtap="onCheckin">
+      <view class="checkin-icon">⭐</view>
+      <view class="checkin-text">每日星光打卡</view>
+      <view class="checkin-status">{{checkinDone ? '已完成' : '今日打卡'}}</view>
+    </view>
+
+    <!-- 打卡成功弹窗 -->
+    <view class="checkin-modal-mask" wx:if="{{checkinModal}}" catchtap="onCloseCheckinModal"></view>
+    <view class="checkin-modal" wx:if="{{checkinModal}}">
+      <view class="checkin-modal-bg"></view>
+      <view class="checkin-modal-content">
+        <view class="checkin-modal-icon">✨</view>
+        <view class="checkin-modal-title">打卡成功</view>
+        <view class="checkin-modal-reward">获得 +{{checkinReward}}⭐ 星光</view>
+        <view class="checkin-modal-divider"></view>
+        <view class="checkin-modal-quote">{{checkinQuote}}</view>
+        <view class="checkin-modal-btn" catchtap="onCloseCheckinModal">好的</view>
+      </view>
+    </view>
+
+    <!-- 深空背景音乐播放器 -->
+    <view class="music-player" bindtap="onToggleMusic">
+      <view class="music-btn {{musicPlaying ? 'music-on' : 'music-off'}}">
+        <view class="music-icon">{{musicPlaying ? '🔊' : '🔇'}}</view>
+      </view>
+      <view class="music-marquee">
+        <text class="marquee-text">✨ 深空回响 · 星辰相伴 ✨</text>
+      </view>
+    </view>
+
+    <!-- 魔法星空船舵：中心仅负责进入我的星球 -->
+    <view class="steering-wheel">
+      <view class="wheel-halo"></view>
+      <view class="wheel-ring wheel-ring-outer"></view>
+      <view class="wheel-ring wheel-ring-inner"></view>
+      <view class="wheel-spoke spoke-top"></view>
+      <view class="wheel-spoke spoke-upper-left"></view>
+      <view class="wheel-spoke spoke-upper-right"></view>
+      <view class="wheel-spoke spoke-left"></view>
+      <view class="wheel-spoke spoke-right"></view>
+      <view class="wheel-spoke spoke-lower-left"></view>
+      <view class="wheel-spoke spoke-lower-right"></view>
+      <view class="wheel-spoke spoke-bottom"></view>
+      <view class="wheel-joint joint-top"></view>
+      <view class="wheel-joint joint-upper-left"></view>
+      <view class="wheel-joint joint-upper-right"></view>
+      <view class="wheel-joint joint-left"></view>
+      <view class="wheel-joint joint-right"></view>
+      <view class="wheel-joint joint-lower-left"></view>
+      <view class="wheel-joint joint-lower-right"></view>
+      <view class="wheel-joint joint-bottom"></view>
+
+      <view class="steering-leaf leaf-top" bindtap="onRanking">
+        <view class="leaf-icon">🏆</view>
+        <view class="leaf-label">星座榜单</view>
+      </view>
+
+      <view class="steering-leaf leaf-upper-left" bindtap="onExploreTest">
+        <view class="leaf-icon">🪐</view>
+        <view class="leaf-label">星座试炼</view>
+      </view>
+
+      <view class="steering-leaf leaf-upper-right" bindtap="onPuzzle">
+        <view class="leaf-icon">🎮</view>
+        <view class="leaf-label">星座消消乐</view>
+      </view>
+
+      <view class="steering-leaf leaf-left" bindtap="onMatch">
+        <view class="leaf-icon">💫</view>
+        <view class="leaf-label">星座匹配</view>
+      </view>
+
+      <view class="steering-leaf leaf-right" bindtap="onFortune">
+        <view class="leaf-icon">✨</view>
+        <view class="leaf-label">星座趣谈</view>
+      </view>
+
+      <view class="steering-leaf leaf-lower-left" bindtap="onZodiacWiki">
+        <view class="leaf-icon">📖</view>
+        <view class="leaf-label">星座百科</view>
+      </view>
+
+      <view class="steering-leaf leaf-lower-right" bindtap="onExplore">
+        <view class="leaf-icon">🚀</view>
+        <view class="leaf-label">星座探索</view>
+      </view>
+
+      <view class="steering-leaf leaf-bottom" bindtap="onSettings">
+        <view class="leaf-icon">⚙️</view>
+        <view class="leaf-label">设置中心</view>
+      </view>
+
+      <view class="wheel-center">
+        <button class="center-btn center-btn-reset" bindtap="onStart" hover-class="center-btn-hover">
+          <view class="center-glow"></view>
+          <view class="center-shine"></view>
+          <text class="center-text">{{buttonText}}</text>
+        </button>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 娱乐免责声明 -->
+  <view class="home-disclaimer">
+    <text class="disclaimer-text">✨ 宇宙小提示：本小程序内容仅供娱乐参考，不是真实预测或专业建议</text>
+  </view>
+
+</view>

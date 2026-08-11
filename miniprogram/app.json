@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/birthday/index",
+    "pages/constellation/index",
+    "pages/planet/index",
+    "pages/explore/index",
+    "pages/timeline/index",
+    "pages/ranking/index",
+    "pages/settings/index",
+    "pages/horoscope/index",
+    "pages/match/index",
+    "pages/profile/edit/index",
+    "pages/zodiac/index",
+    "pages/zodiac/detail/index",
+    "pages/zodiac/resonance/index",
+    "pages/zodiac/resonance/select/index",
+    "pages/admin/reset/index",
+    "pages/puzzle/index",
+    "pages/exploreTest/index"
+  ],
+  "window": {
+    "backgroundColor": "#03081A",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#03081A",
+    "navigationBarTitleText": "星座宇宙",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "__usePrivacyCheck__": true
+}

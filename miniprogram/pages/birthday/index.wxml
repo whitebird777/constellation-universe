@@ -1,0 +1,32 @@
+<!--birthday.wxml V3 -->
+<view class="page-full birthday-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="universe-atmosphere">
+    <view class="atmo-glow" style="top:30%;"></view>
+    <view class="atmo-nebula-left"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="atmo-star" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view wx:for="{{dust}}" wx:key="i" class="atmo-dust" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view class="atmo-meteor"></view>
+    <view class="atmo-meteor-fast"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <view class="glass-card" style="width:560rpx;text-align:center;margin-top:120rpx;padding:36rpx;">
+    <view class="text-title">请选择你的生日</view>
+    <view class="text-body" style="margin-top:8rpx;margin-bottom:32rpx;">我们将根据生日生成你的星座身份。</view>
+
+    <picker mode="date" value="{{birthday}}" start="1900-01-01" bindchange="onPickerChange">
+      <view class="picker-display {{canContinue ? 'picker-selected' : 'picker-empty'}}">
+        <view class="picker-label">🎂</view>
+        <view class="picker-value">{{displayDate}}</view>
+        <view class="picker-arrow">›</view>
+      </view>
+    </picker>
+  </view>
+
+  <view style="margin-top:32rpx;">
+    <button class="btn-primary {{canContinue ? '' : 'btn-disabled'}}" disabled="{{!canContinue}}" bindtap="onContinue">继续</button>
+  </view>
+
+</view>

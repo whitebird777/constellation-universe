@@ -1,0 +1,70 @@
+<!-- pages/zodiac/resonance/index.wxml — 星座共鸣 -->
+<view class="res-root" style="padding-top:{{statusBarHeight}}px;">
+
+  <!-- 宇宙背景 -->
+  <view class="res-bg">
+    <view class="res-nebula res-nebula-l"></view>
+    <view class="res-nebula res-nebula-r"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="res-star" style="{{item.s}}"></view>
+  </view>
+
+  <!-- ← 返回 -->
+  <view class="res-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- 星座顶部 -->
+  <view class="res-hero">
+    <view class="res-hero-glow" style="background: radial-gradient(circle, {{zodiac.color}}22 0%, {{zodiac.color}}08 50%, transparent 72%);"></view>
+    <view class="res-hero-symbol" style="color: {{zodiac.color}}; text-shadow: 0 0 40rpx {{zodiac.color}}44;">{{zodiac.symbol}}</view>
+  </view>
+
+  <view class="res-header">
+    <view class="res-name">{{zodiac.name}}</view>
+    <view class="res-label">🌟 星座共鸣</view>
+  </view>
+
+  <!-- 共鸣探索 -->
+  <view class="res-card">
+    <view class="res-card-label">🔍 共鸣探索</view>
+
+    <!-- 有数据 -->
+    <block wx:if="{{rankingTotal > 0}}">
+      <view class="res-explore-count">已有 <text class="res-explore-num">{{rankingTotal}}</text> 位探索者参与</view>
+      <view class="res-explore-intro">大家眼中的{{zodiac.name}}</view>
+      <view class="res-ranking-list">
+        <view wx:for="{{rankingList}}" wx:key="tag" class="res-rank-item">
+          <view class="res-rank-left">
+            <view class="res-rank-tag">{{item.tag}}</view>
+          </view>
+          <view class="res-rank-right">
+            <view class="res-rank-votes">{{item.count}} 票</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 无数据 -->
+    <view wx:else class="res-explore-placeholder">
+      <view class="res-explore-icon">✨</view>
+      <view class="res-explore-text">共鸣数据正在汇集中</view>
+      <view class="res-explore-sub">成为第一个留下星座印象的人</view>
+    </view>
+  </view>
+
+  <!-- 星座共鸣计划 -->
+  <view class="res-card res-plan">
+    <view class="res-card-label">🌟 星座共鸣计划</view>
+    <view class="res-plan-item" bindtap="onSelectTags">
+      <view class="res-plan-icon">💬</view>
+      <view class="res-plan-text">选择你的星座标签</view>
+      <view class="res-plan-arrow">→</view>
+    </view>
+    <view class="res-plan-item" bindtap="onCommunity">
+      <view class="res-plan-icon">🚀</view>
+      <view class="res-plan-text">加入星座共鸣社区</view>
+      <view class="res-plan-arrow">→</view>
+    </view>
+  </view>
+
+  <view class="res-spacer"></view>
+
+</view>

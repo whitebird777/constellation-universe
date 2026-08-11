@@ -1,0 +1,96 @@
+<!-- puzzle/index.wxml — 星座消消乐 V1 -->
+<view class="page-full puzzle-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view wx:if="{{noPlanet}}" style="width:560rpx;margin-top:200rpx;text-align:center;padding:40rpx 22rpx;">
+    <view style="font-size:48rpx;margin-bottom:16rpx;">🌌</view>
+    <view style="font-size:26rpx;color:rgba(255,255,255,0.55);margin-bottom:24rpx;">请先成为星球主人后参与星座消消乐挑战</view>
+    <button class="btn-primary" style="width:400rpx;height:80rpx;" bindtap="onCreatePlanet">创建我的星球</button>
+  </view>
+
+  <block wx:else>
+
+  <view class="universe-atmosphere">
+    <view class="atmo-glow" style="top:20%;"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="atmo-star" style="{{item.s}}"></view>
+    <view class="atmo-meteor"></view>
+    <view class="atmo-meteor-fast"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <view class="text-title" style="margin-top:80rpx;margin-bottom:12rpx;">🎮 星座消消乐</view>
+
+  <!-- 分数区 + 倒计时 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;text-align:center;margin-bottom:10rpx;">
+    <view style="display:flex;justify-content:space-around;">
+      <view>
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.35);">当前分数</view>
+        <view style="font-size:36rpx;font-weight:700;color:rgba(180,160,240,0.9);">{{score}}</view>
+      </view>
+      <view>
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.35);">剩余时间</view>
+        <view style="font-size:36rpx;font-weight:700;color:rgba(180,220,200,0.8);">{{timeDisplay}}</view>
+      </view>
+      <view>
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.35);">最高分</view>
+        <view style="font-size:36rpx;font-weight:700;color:rgba(220,180,100,0.85);">
+          {{highScore > 0 ? highScore : '-'}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 消除奖励飘字 -->
+  <view class="score-float {{showScoreFloat ? 'score-float-active' : ''}}" wx:if="{{showScoreFloat}}">
+    ✨ +{{lastGain}}
+  </view>
+
+  <!-- 游戏板 -->
+  <view class="glass-card" style="width:560rpx;padding:16rpx;margin-bottom:28rpx;">
+    <view class="puzzle-board {{eliminating ? 'board-eliminating' : ''}}">
+      <view wx:for="{{board}}" wx:key="*this" wx:for-index="row" class="puzzle-row">
+        <view
+          wx:for="{{item}}"
+          wx:key="*this"
+          wx:for-index="col"
+          class="puzzle-cell {{selectedCell && selectedCell.r === row && selectedCell.c === col ? 'cell-selected' : ''}}"
+          data-row="{{row}}"
+          data-col="{{col}}"
+          bindtap="onCellTap"
+        >{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 新纪录提示 -->
+  <view wx:if="{{gameOver && score >= highScore && score > 0}}" style="text-align:center;margin-bottom:8rpx;">
+    <view style="font-size:32rpx;color:rgba(255,200,100,0.9);">🎉 新纪录！</view>
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.4);">{{score}} 分</view>
+  </view>
+
+  <!-- 游戏结束-无可用移动 -->
+  <view wx:if="{{gameOver}}" style="text-align:center;margin-bottom:8rpx;">
+    <view style="font-size:24rpx;color:rgba(255,255,255,0.5);">没有可用移动了，重新开始吧</view>
+  </view>
+
+  <!-- 重新开始 -->
+  <view style="margin-bottom:36rpx;">
+    <button class="btn-primary" bindtap="onRestart">🔄 重新开始</button>
+  </view>
+
+  <!-- 每日任务卡片 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-bottom:30rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.35);letter-spacing:2rpx;text-align:center;margin-bottom:8rpx;">🎯 每日任务</view>
+    <view style="text-align:center;margin-bottom:10rpx;">
+      <view style="font-size:24rpx;color:rgba(255,255,255,0.7);">🎮 星座消消乐挑战</view>
+      <view style="font-size:20rpx;color:rgba(255,255,255,0.35);margin-top:4rpx;">达成5000分成就</view>
+    </view>
+    <view style="display:flex;justify-content:center;">
+      <button wx:if="{{missionStatus === 'locked'}}" class="btn-disabled" style="width:400rpx;height:80rpx;">🔒 未完成</button>
+      <button wx:elif="{{missionStatus === 'claim'}}" class="btn-primary" style="width:400rpx;height:80rpx;" bindtap="onClaim">🎁 点击领取50星光</button>
+      <button wx:else class="btn-disabled" style="width:400rpx;height:80rpx;">✅ 今日已记录</button>
+    </view>
+  </view>
+
+</block>
+</view>

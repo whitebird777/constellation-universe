@@ -1,0 +1,16 @@
+/**horoscope.wxss V3 **/
+.horo-page { justify-content: flex-start; }
+
+.horo-bg { position: fixed; top:0; left:0; width:100%; height:100vh; pointer-events:none; z-index:0; overflow:hidden; }
+.bg-nebula { position: absolute; width: 80%; height: 60%; border-radius: 50%; }
+.bg-nebula--L { top:8%; left:-30%; background: radial-gradient(ellipse, rgba(120,90,200,0.08) 0%, transparent 65%); animation: nDrift 24s ease-in-out infinite alternate; }
+.bg-nebula--R { top:30%; right:-28%; background: radial-gradient(ellipse, rgba(70,100,180,0.06) 0%, transparent 65%); animation: nDrift 28s ease-in-out infinite alternate-reverse; }
+@keyframes nDrift { 0%{transform:translate(0,0)} 100%{transform:translate(20rpx,-12rpx)} }
+.bg-galaxy { position: absolute; top:25%; left:50%; transform:translateX(-50%); width:500rpx; height:500rpx; border-radius:50%; background: radial-gradient(circle, rgba(140,100,220,0.08) 0%, transparent 60%); animation: gBreath 8s ease-in-out infinite alternate; }
+@keyframes gBreath { 0%{opacity:0.4;transform:translateX(-50%) scale(0.9)} 100%{opacity:1;transform:translateX(-50%) scale(1.1)} }
+.bg-star { position: absolute; border-radius:50%; background:#fff; }
+
+.horo-hero { text-align:center; flex-shrink:0; padding-top:40rpx; }
+.horo-icon { font-size:80rpx; text-shadow:0 0 60rpx rgba(160,140,220,0.5); }
+.horo-name { font-size:36rpx; font-weight:600; color:rgba(255,255,255,0.9); margin-top:8rpx; letter-spacing:4rpx; }
+.horo-welcome { font-size:24rpx; color:rgba(255,255,255,0.45); margin-top:8rpx; }

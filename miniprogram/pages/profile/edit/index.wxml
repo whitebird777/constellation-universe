@@ -1,0 +1,42 @@
+<!-- pages/profile/edit/index.wxml — 居民资料完善 -->
+<view class="page-full profile-edit-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="universe-atmosphere">
+    <view class="atmo-glow" style="top:20%;"></view>
+    <view class="atmo-nebula-right" style="top:20%;right:-15%;width:60%;height:55%;background:radial-gradient(ellipse, rgba(140,120,200,0.08) 0%, transparent 70%);"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <view class="text-title" style="margin-top:80rpx;margin-bottom:12rpx;">完善居民资料</view>
+  <view class="text-sub">使用微信身份信息创建你的星球居民资料</view>
+
+  <!-- 头像 -->
+  <view class="pe-avatar-section">
+    <button class="pe-avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image wx:if="{{avatar}}" src="{{avatar}}" class="pe-avatar-img" mode="aspectFill" />
+      <view wx:else class="pe-avatar-placeholder">🌌</view>
+    </button>
+    <view wx:if="{{avatar}}" class="pe-avatar-done">微信头像已就绪</view>
+    <view wx:else class="pe-avatar-hint">点击使用微信头像</view>
+  </view>
+
+  <!-- 昵称 -->
+  <view class="pe-nickname-section">
+    <view class="pe-nickname-label">微信昵称</view>
+    <input
+      type="nickname"
+      class="pe-nickname-input"
+      placeholder="微信昵称"
+      value="{{nickname}}"
+      bindinput="onNicknameInput"
+      bindblur="onNicknameBlur"
+    />
+  </view>
+
+  <!-- 保存 -->
+  <view class="pe-submit-btn {{avatar && nickname ? '' : 'pe-submit-disabled'}}" bindtap="onSubmit">
+    保存资料
+  </view>
+
+</view>

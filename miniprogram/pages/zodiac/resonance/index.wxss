@@ -1,0 +1,114 @@
+/**
+ * resonance.wxss — 星座共鸣页
+ */
+
+/* ═══ 根 ═══ */
+.res-root {
+  width: 750rpx; min-height: 100vh; position: relative; overflow-y: auto;
+  background: radial-gradient(ellipse at 50% 25%, #0E1648 0%, #090F35 40%, #03081A 100%);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ═══ 背景 ═══ */
+.res-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 0; }
+.res-nebula { position: absolute; border-radius: 50%; }
+.res-nebula-l { top: 5%; left: -35%; width: 85%; height: 55%; background: radial-gradient(ellipse, rgba(100,80,200,0.06) 0%, transparent 65%); }
+.res-nebula-r { top: 40%; right: -30%; width: 75%; height: 50%; background: radial-gradient(ellipse, rgba(55,95,180,0.05) 0%, transparent 65%); }
+.res-star { position: absolute; border-radius: 50%; background: #fff; }
+
+/* ═══ 返回 ═══ */
+.res-back {
+  position: absolute; left: 28rpx; z-index: 50; top: 0;
+  font-size: 26rpx; color: rgba(255,255,255,0.55);
+  padding: 10rpx 20rpx; background: rgba(0,0,0,0.25); border-radius: 30rpx;
+}
+
+/* ═══ 星座顶部 ═══ */
+.res-hero {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 60rpx; position: relative; z-index: 2;
+}
+.res-hero-glow {
+  position: absolute; width: 220rpx; height: 220rpx; border-radius: 50%;
+  animation: heroPulse 4s ease-in-out infinite alternate;
+}
+@keyframes heroPulse {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1.08); }
+}
+.res-hero-symbol {
+  position: relative; z-index: 2;
+  font-size: 96rpx; line-height: 1;
+}
+.res-header { text-align: center; margin-top: 14rpx; position: relative; z-index: 2; }
+.res-name { font-size: 36rpx; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 6rpx; }
+.res-label { font-size: 22rpx; color: rgba(200,180,240,0.45); margin-top: 6rpx; letter-spacing: 3rpx; }
+
+/* ═══ 卡片 ═══ */
+.res-card {
+  width: 640rpx; padding: 28rpx 30rpx; margin-top: 20rpx;
+  background: rgba(100,125,225,0.05);
+  border: 1rpx solid rgba(140,160,240,0.10);
+  border-radius: 24rpx;
+  position: relative; z-index: 2;
+}
+.res-card-label { font-size: 18rpx; color: rgba(200,210,255,0.4); letter-spacing: 4rpx; text-align: center; margin-bottom: 10rpx; }
+
+/* ── 共鸣探索 ── */
+.res-explore-count {
+  text-align: center; font-size: 22rpx; color: rgba(255,255,255,0.4);
+  margin-bottom: 6rpx;
+}
+.res-explore-num {
+  color: rgba(230,210,120,0.9); font-weight: 700;
+}
+.res-explore-intro {
+  text-align: center; font-size: 20rpx; color: rgba(255,255,255,0.3);
+  margin-bottom: 18rpx;
+}
+.res-ranking-list {
+  display: flex; flex-direction: column; gap: 10rpx;
+}
+.res-rank-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14rpx 20rpx; border-radius: 14rpx;
+  background: rgba(100,125,225,0.04);
+  border: 1rpx solid rgba(140,160,240,0.06);
+}
+.res-rank-left {
+  display: flex; align-items: center; gap: 10rpx;
+}
+.res-rank-tag {
+  font-size: 22rpx; color: rgba(200,210,255,0.8);
+}
+.res-rank-votes {
+  font-size: 20rpx; color: rgba(230,210,120,0.7); font-weight: 600;
+}
+
+.res-explore-placeholder {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 28rpx 0; border-radius: 16rpx;
+  background: rgba(100,125,225,0.03);
+  border: 1rpx dashed rgba(140,160,240,0.06);
+}
+.res-explore-icon { font-size: 36rpx; opacity: 0.4; margin-bottom: 10rpx; }
+.res-explore-text { font-size: 24rpx; color: rgba(255,255,255,0.35); letter-spacing: 2rpx; }
+.res-explore-sub  { font-size: 18rpx; color: rgba(255,255,255,0.18); margin-top: 6rpx; }
+
+/* ── 共鸣计划 ── */
+.res-plan { padding-bottom: 22rpx; margin-bottom: 60rpx; }
+.res-plan-item {
+  display: flex; align-items: center; gap: 14rpx;
+  padding: 18rpx 20rpx; border-radius: 14rpx;
+  background: rgba(100,125,225,0.04);
+  border: 1rpx solid rgba(140,160,240,0.06);
+  margin-bottom: 10rpx;
+}
+.res-plan-item:last-of-type { margin-bottom: 16rpx; }
+.res-plan-icon { font-size: 28rpx; width: 44rpx; text-align: center; flex-shrink: 0; }
+.res-plan-text { flex: 1; font-size: 22rpx; color: #FF4D4F; }
+.res-plan-arrow { font-size: 22rpx; color: rgba(255,255,255,0.2); }
+.res-plan-note { font-size: 20rpx; color: rgba(255,255,255,0.22); text-align: center; }
+
+/* ═══ 底部 ═══ */
+.res-spacer { height: 20rpx; }

@@ -1,0 +1,9 @@
+{
+  "name": "getAvatarUrls",
+  "version": "1.0.0",
+  "description": "将 cloud:// fileID 转换为临时 HTTPS URL",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

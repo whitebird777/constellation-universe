@@ -1,0 +1,69 @@
+/** puzzle/index.wxss — 星座消消乐 V1 **/
+.puzzle-page { justify-content: flex-start; }
+
+/* 游戏棋盘 */
+.puzzle-board {
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 8rpx;
+  transition: transform 0.08s ease-out;
+}
+
+/* 消除反馈：棋盘缩放 + 发光 */
+@keyframes boardPop {
+  0%   { transform: scale(1);   filter: brightness(1); }
+  30%  { transform: scale(1.04); filter: brightness(1.35); }
+  100% { transform: scale(1);   filter: brightness(1); }
+}
+.board-eliminating {
+  animation: boardPop 0.28s ease-out;
+}
+
+/* 消除奖励飘字 */
+.score-float {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 0 0 20rpx rgba(255, 200, 50, 0.6);
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+}
+@keyframes scoreFloatUp {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
+  20%  { opacity: 1; transform: translate(-50%, -60%) scale(1.1); }
+  60%  { opacity: 0.8; transform: translate(-50%, -80%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -120%) scale(0.8); }
+}
+.score-float-active {
+  animation: scoreFloatUp 0.8s ease-out forwards;
+}
+.puzzle-row {
+  display: flex;
+}
+.puzzle-cell {
+  width: 62rpx; height: 62rpx;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34rpx;
+  border-radius: 10rpx;
+  margin: 2rpx;
+  background: rgba(100,120,220,0.08);
+  border: 1rpx solid rgba(120,150,240,0.1);
+  transition: background 0.15s ease;
+}
+.cell-selected {
+  background: rgba(180,160,240,0.25);
+  border-color: rgba(180,160,240,0.4);
+  box-shadow: 0 0 12rpx rgba(160,140,220,0.25);
+}
+
+/* 全局 btn-disabled 在谜题页面的高度适配 */
+.puzzle-page .btn-disabled {
+  width: 400rpx; height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}

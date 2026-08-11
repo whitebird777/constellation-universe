@@ -1,0 +1,9 @@
+{
+  "name": "submitResonance",
+  "version": "1.0.0",
+  "description": "星座共鸣 — 提交用户星辰标签选择",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

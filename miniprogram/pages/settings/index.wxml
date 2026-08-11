@@ -1,0 +1,94 @@
+<!--settings.wxml V3 -->
+<view class="page-full settings-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="universe-atmosphere">
+    <view class="atmo-glow" style="top:20%;"></view>
+    <view class="atmo-nebula-right" style="top:20%;right:-15%;width:60%;height:55%;background:radial-gradient(ellipse, rgba(140,120,200,0.08) 0%, transparent 70%);"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="atmo-star" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view wx:for="{{dust}}" wx:key="i" class="atmo-dust" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view class="atmo-meteor"></view>
+    <view class="atmo-meteor-fast"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <view class="text-title" style="margin-top:80rpx;margin-bottom:36rpx;">⚙️ 设置</view>
+
+  <view class="glass-card" style="width:560rpx;">
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:12rpx 0;">
+      <view style="font-size:26rpx;color:rgba(255,255,255,0.55);">Version</view>
+      <view style="font-size:22rpx;color:rgba(255,255,255,0.25);">1.3.0</view>
+    </view>
+    <view style="height:1rpx;background:rgba(255,255,255,0.04);"></view>
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:16rpx 0;" bindtap="onAbout">
+    <view style="font-size:26rpx;color:rgba(255,255,255,0.55);">关于星座宇宙</view>
+    </view>
+    <view style="height:1rpx;background:rgba(255,255,255,0.04);"></view>
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:16rpx 0;" bindtap="onPrivacy">
+      <view style="font-size:26rpx;color:rgba(255,255,255,0.55);">隐私保护指引</view>
+    </view>
+    <view style="height:1rpx;background:rgba(255,255,255,0.04);"></view>
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:16rpx 0;" bindtap="onFeedback">
+      <view style="font-size:26rpx;color:rgba(255,255,255,0.55);">意见反馈</view>
+    </view>
+  </view>
+
+  <!-- Reset 单独卡片，位于最底部 -->
+  <view class="glass-card" style="width:560rpx;margin-top:24rpx;">
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:16rpx 0;" bindtap="onReset">
+      <view style="font-size:26rpx;color:#E56060;">重置星球</view>
+      <view style="font-size:20rpx;color:rgba(229,96,96,0.35);">危险操作</view>
+    </view>
+  </view>
+
+  <!-- 管理员：宇宙重启入口（仅 isAdmin 显示） -->
+  <view wx:if="{{isAdmin}}" class="glass-card" style="width:560rpx;margin-top:24rpx;">
+    <view style="display:flex;align-items:center;justify-content:space-between;padding:16rpx 0;" bindtap="onAdminReset">
+      <view style="font-size:26rpx;color:rgba(140,180,220,0.65);">🌌 宇宙重启</view>
+      <view style="font-size:20rpx;color:rgba(140,180,220,0.2);">管理员</view>
+    </view>
+  </view>
+
+  <!-- 隐私弹窗 -->
+  <view wx:if="{{showPrivacy}}" class="privacy-mask" bindtap="closePrivacy">
+    <view class="privacy-dialog" catchtap="">
+      <view class="privacy-title">隐私保护指引</view>
+      <scroll-view scroll-y class="privacy-scroll">
+        <view class="privacy-text">
+          星座宇宙重视用户隐私保护。\n\n
+
+          为了提供星座计算、星球成长和排行榜功能，我们会使用以下信息：\n\n
+
+          1. 微信身份信息\n
+          包括微信头像、昵称。\n
+          用于用户身份识别及排行榜展示。\n\n
+
+          2. 出生日期\n
+          用于计算用户所属星座。\n\n
+
+          3. 游戏数据\n
+          包括星光、星球成长等数据。\n
+          用于保存游戏进度。\n\n
+
+          我们不会出售、泄露用户信息，\n
+          也不会收集与功能无关的信息。\n\n
+
+          感谢你的支持。
+        </view>
+      </scroll-view>
+      <view class="privacy-close" bindtap="closePrivacy">好的</view>
+    </view>
+  </view>
+
+  <!-- 反馈弹窗 -->
+  <view wx:if="{{showFeedback}}" class="feedback-mask" bindtap="closeFeedback">
+    <view class="feedback-dialog" catchtap="">
+      <view class="feedback-title">意见反馈</view>
+      <view class="feedback-content">如果你在使用过程中遇到问题，\n可以通过官方客服联系我们，\n我们会持续优化星座宇宙体验。</view>
+      <button class="feedback-contact-btn" open-type="contact" bindcontact="onContactCallback">联系客服</button>
+      <view class="feedback-thanks">感谢每一位星球居民的反馈和建议 ✨</view>
+      <view class="feedback-close" bindtap="closeFeedback">好的</view>
+    </view>
+  </view>
+
+</view>

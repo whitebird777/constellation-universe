@@ -1,0 +1,86 @@
+/**
+ * zodiac.wxss — 星座百科 V2.0
+ */
+
+/* ═══ 根容器 ═══ */
+.zodiac-root {
+  width: 750rpx; min-height: 100vh; position: relative; overflow-y: auto;
+  background: radial-gradient(ellipse at 50% 30%, #0E1648 0%, #090F35 40%, #03081A 100%);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ═══ 宇宙背景 ═══ */
+.zodiac-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 0; }
+.zg-nebula { position: absolute; border-radius: 50%; }
+.zg-nebula-l { top: 5%; left: -35%; width: 85%; height: 55%; background: radial-gradient(ellipse, rgba(100,80,200,0.07) 0%, transparent 65%); }
+.zg-nebula-r { top: 35%; right: -30%; width: 75%; height: 50%; background: radial-gradient(ellipse, rgba(55,95,180,0.06) 0%, transparent 65%); }
+.zg-star { position: absolute; border-radius: 50%; background: #fff; }
+
+/* ═══ 返回 ═══ */
+.zg-back {
+  position: absolute; left: 28rpx; z-index: 50; top: 0;
+  font-size: 26rpx; color: rgba(255,255,255,0.55);
+  padding: 10rpx 20rpx; background: rgba(0,0,0,0.25); border-radius: 30rpx;
+}
+
+/* ═══ 标题 ═══ */
+.zg-header { text-align: center; margin-top: 50rpx; margin-bottom: 28rpx; position: relative; z-index: 2; flex-shrink: 0; }
+.zg-title   { font-size: 38rpx; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: 6rpx; }
+.zg-subtitle{ font-size: 22rpx; color: rgba(255,255,255,0.45); margin-top: 8rpx; letter-spacing: 2rpx; }
+
+/* ═══ 十二星座宫格 ═══ */
+.zg-grid {
+  position: relative; z-index: 2; flex-shrink: 0;
+  width: 690rpx;
+  display: flex; flex-wrap: wrap;
+  gap: 16rpx;
+  justify-content: center;
+}
+.zg-card-item {
+  width: 210rpx; height: 180rpx;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(100,125,225,0.05);
+  border: 1rpx solid rgba(140,160,240,0.12);
+  border-radius: 24rpx;
+  box-sizing: border-box;
+}
+.zg-card-item:active { background: rgba(140,160,240,0.12); }
+
+.zg-card-symbol { font-size: 40rpx; line-height: 1; margin-bottom: 6rpx; }
+.zg-card-name   { font-size: 22rpx; font-weight: 600; color: rgba(255,255,255,0.8); margin-bottom: 4rpx; }
+.zg-card-date   { font-size: 18rpx; color: rgba(255,255,255,0.3); }
+
+/* ═══ 底部探索卡 ═══ */
+.zg-footer-card {
+  position: relative; z-index: 2; flex-shrink: 0;
+  width: 600rpx; margin-top: 16rpx; margin-bottom: 60rpx; padding: 24rpx 30rpx;
+  background: rgba(100,125,225,0.05);
+  border: 1rpx solid rgba(140,160,240,0.10);
+  border-radius: 24rpx;
+  text-align: center;
+}
+.zg-footer-dot   { font-size: 26rpx; opacity: 0.45; margin-bottom: 6rpx; }
+.zg-footer-title { font-size: 20rpx; color: rgba(255,255,255,0.3); letter-spacing: 2rpx; }
+.zg-footer-stat  { font-size: 26rpx; font-weight: 700; color: rgba(230,210,120,0.8); margin-top: 8rpx; }
+.zg-footer-hint  { font-size: 18rpx; color: #FF4D4F; margin-top: 8rpx; }
+
+/* ═══ 星座四象 ═══ */
+.zg-elements-card {
+  position: relative; z-index: 2; flex-shrink: 0;
+  width: 600rpx; margin-bottom: 0; padding: 24rpx 30rpx;
+  background: rgba(100,125,225,0.05);
+  border: 1rpx solid rgba(140,160,240,0.10);
+  border-radius: 24rpx;
+}
+.zg-elements-title { font-size: 20rpx; color: rgba(255,255,255,0.35); letter-spacing: 3rpx; text-align: center; margin-bottom: 18rpx; }
+.zg-element-row {
+  display: flex; align-items: center; gap: 14rpx;
+  padding: 16rpx 16rpx; border-radius: 14rpx;
+  background: rgba(100,125,225,0.03);
+  margin-bottom: 10rpx;
+}
+.zg-element-row:last-child { margin-bottom: 0; }
+.zg-element-icon { font-size: 32rpx; width: 48rpx; text-align: center; flex-shrink: 0; }
+.zg-element-info { flex: 1; }
+.zg-element-name { font-size: 22rpx; font-weight: 600; color: rgba(255,255,255,0.75); margin-bottom: 4rpx; }
+.zg-element-signs{ font-size: 18rpx; color: rgba(255,255,255,0.3); line-height: 1.4; }

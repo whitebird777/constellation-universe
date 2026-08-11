@@ -1,0 +1,75 @@
+<!-- horoscope/index.wxml V4 — 每日星座主题分享 -->
+<view class="page-full horo-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="horo-bg">
+    <view class="bg-nebula bg-nebula--L"></view>
+    <view class="bg-nebula bg-nebula--R"></view>
+    <view class="bg-galaxy"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- 1. 星座身份 -->
+  <view class="horo-hero">
+    <view class="horo-icon">{{constellationIcon}}</view>
+    <view class="horo-name">{{constellationName}}</view>
+    <view class="horo-welcome">{{welcome}}</view>
+  </view>
+
+  <!-- 2. 今日主题 -->
+  <view class="glass-card" style="width:560rpx;text-align:center;padding:22rpx;margin-top:12rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.4);letter-spacing:2rpx;">今日主题</view>
+    <view style="font-size:26rpx;color:rgba(180,160,240,0.85);margin-top:10rpx;line-height:1.7;">{{dimensions[0].tip}}</view>
+  </view>
+
+  <!-- 3. 四维状态 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:10rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.35);letter-spacing:2rpx;text-align:center;">今日状态</view>
+    <view wx:for="{{dimensions}}" wx:key="icon" style="margin-top:16rpx;">
+      <view style="display:flex;align-items:center;margin-bottom:6rpx;">
+        <view style="font-size:28rpx;margin-right:8rpx;">{{item.icon}}</view>
+        <view style="font-size:24rpx;font-weight:600;color:rgba(255,255,255,0.8);">{{item.label}}</view>
+      </view>
+      <view style="font-size:22rpx;color:rgba(255,255,255,0.45);line-height:1.7;margin-left:36rpx;">{{item.tip}}</view>
+    </view>
+  </view>
+
+  <!-- 4. 今日推荐（仅供娱乐参考） -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:10rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.35);letter-spacing:2rpx;text-align:center;">✨ 今日推荐</view>
+    <view style="font-size:18rpx;color:rgba(255,255,255,0.2);text-align:center;margin-top:4rpx;">仅供娱乐参考</view>
+    <view style="display:flex;flex-wrap:wrap;margin-top:12rpx;">
+      <view style="width:50%;padding:8rpx 0;">
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.3);">🎨 推荐颜色</view>
+        <view style="font-size:24rpx;color:rgba(255,255,255,0.65);margin-top:4rpx;">{{recommend.color.name}}</view>
+      </view>
+      <view style="width:50%;padding:8rpx 0;">
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.3);">🔢 灵感数字</view>
+        <view style="font-size:24rpx;color:rgba(255,255,255,0.65);margin-top:4rpx;">{{recommend.numbers[0]}}、{{recommend.numbers[1]}}、{{recommend.numbers[2]}}</view>
+      </view>
+      <view style="width:50%;padding:8rpx 0;">
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.3);">⏰ 推荐时段</view>
+        <view style="font-size:24rpx;color:rgba(255,255,255,0.65);margin-top:4rpx;">{{recommend.time}}</view>
+      </view>
+      <view style="width:50%;padding:8rpx 0;">
+        <view style="font-size:20rpx;color:rgba(255,255,255,0.3);">🎁 今日小物</view>
+        <view style="font-size:24rpx;color:rgba(255,255,255,0.65);margin-top:4rpx;">{{recommend.item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 5. 今日提醒 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:10rpx;background:rgba(120,100,200,0.06);border-color:rgba(140,120,220,0.15);">
+    <view style="font-size:22rpx;color:rgba(200,180,240,0.6);letter-spacing:2rpx;text-align:center;">🌟 今日提醒</view>
+    <view style="font-size:26rpx;color:rgba(255,255,255,0.75);margin-top:14rpx;line-height:1.8;">{{advice.action}}</view>
+  </view>
+
+  <!-- 6. 记录按钮 -->
+  <view style="margin-top:16rpx;padding-bottom:40rpx;">
+    <button wx:if="{{isOwner && !recorded}}" class="btn-primary" bindtap="onRecord">✨ 记录今日心情</button>
+    <button wx:elif="{{isOwner}}" class="btn-disabled">✅ 今日已记录</button>
+    <view wx:if="{{!isOwner}}" style="font-size:22rpx;color:rgba(255,255,255,0.3);text-align:center;">这是 {{constellationName}} 的每日主题分享</view>
+  </view>
+
+</view>

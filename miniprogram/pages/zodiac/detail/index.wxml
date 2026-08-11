@@ -1,0 +1,74 @@
+<!-- pages/zodiac/detail/index.wxml — 星座档案 -->
+<view class="detail-root" style="padding-top:{{statusBarHeight}}px;">
+
+  <!-- 宇宙背景 -->
+  <view class="dt-bg">
+    <view class="dt-nebula dt-nebula-l"></view>
+    <view class="dt-nebula dt-nebula-r"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="dt-star" style="{{item.s}}"></view>
+  </view>
+
+  <!-- ← 返回 -->
+  <view class="dt-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- 星座符号光环 -->
+  <view class="dt-hero">
+    <view class="dt-hero-glow" style="background: radial-gradient(circle, {{zodiac.color}}22 0%, {{zodiac.color}}08 50%, transparent 72%);"></view>
+    <view class="dt-hero-symbol" style="color: {{zodiac.color}}; text-shadow: 0 0 40rpx {{zodiac.color}}44;">{{zodiac.symbol}}</view>
+  </view>
+
+  <!-- 星座名称 + 日期 -->
+  <view class="dt-header">
+    <view class="dt-name">{{zodiac.name}}</view>
+    <view class="dt-date">{{zodiac.date}}</view>
+  </view>
+
+  <!-- 基础档案 -->
+  <view class="dt-card">
+    <view class="dt-card-label">📋 星球档案</view>
+    <view class="dt-info-grid">
+      <view class="dt-info-item">
+        <view class="dt-info-icon">{{zodiac.elementIcon}}</view>
+        <view class="dt-info-val">{{zodiac.element}}</view>
+        <view class="dt-info-key">星座元素</view>
+      </view>
+      <view class="dt-info-item">
+        <view class="dt-info-icon">{{zodiac.planetIcon}}</view>
+        <view class="dt-info-val">{{zodiac.planet}}</view>
+        <view class="dt-info-key">守护行星</view>
+      </view>
+    </view>
+    <view class="dt-guardian">{{zodiac.guardianStar}}</view>
+  </view>
+
+  <!-- 星辰关键词 -->
+  <view class="dt-card">
+    <view class="dt-card-label">✨ 星辰关键词</view>
+    <view class="dt-tags">
+      <view wx:for="{{zodiac.keywords}}" wx:key="*this" class="dt-tag">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 星座简介 -->
+  <view class="dt-card">
+    <view class="dt-card-label">📖 星座简介</view>
+    <view class="dt-desc">{{zodiac.description}}</view>
+    <view class="dt-personality">
+      <view class="dt-personality-icon">💫</view>
+      <view class="dt-personality-text">{{zodiac.personality}}</view>
+    </view>
+  </view>
+
+  <!-- ═══ 星座共鸣 ═══ -->
+  <view class="dt-card dt-resonance" bindtap="onResonance">
+    <view class="dt-card-label">🌟 星座共鸣</view>
+    <view class="dt-res-active">
+      <view class="dt-res-icon-active">💬</view>
+      <view class="dt-res-text-active">探索星座共鸣</view>
+      <view class="dt-res-sub">发现大家眼中的星座印象</view>
+    </view>
+  </view>
+
+  <view class="dt-spacer"></view>
+
+</view>

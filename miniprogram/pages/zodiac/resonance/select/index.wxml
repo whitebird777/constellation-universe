@@ -1,0 +1,83 @@
+<!-- pages/zodiac/resonance/select/index.wxml — 星座标签选择 -->
+<view class="sel-root" style="padding-top:{{statusBarHeight}}px;">
+
+  <!-- 宇宙背景 -->
+  <view class="sel-bg">
+    <view class="sel-nebula sel-nebula-l"></view>
+    <view class="sel-nebula sel-nebula-r"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="sel-star" style="{{item.s}}"></view>
+  </view>
+
+  <!-- ← 返回 -->
+  <view class="sel-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- 星座顶部 -->
+  <view class="sel-hero">
+    <view class="sel-hero-glow" style="background: radial-gradient(circle, {{zodiac.color}}22 0%, {{zodiac.color}}08 50%, transparent 72%);"></view>
+    <view class="sel-hero-symbol" style="color: {{zodiac.color}}; text-shadow: 0 0 40rpx {{zodiac.color}}44;">{{zodiac.symbol}}</view>
+  </view>
+
+  <view class="sel-header">
+    <view class="sel-name">{{zodiac.name}}</view>
+    <view class="sel-label">🌟 星座标签选择</view>
+  </view>
+
+  <!-- 已选计数 -->
+  <view class="sel-count">
+    <view class="sel-count-text">已选择 <text class="sel-count-num">{{selectedCount}}</text> / 5</view>
+    <view class="sel-count-prompt">请选择你认为符合的星座标签</view>
+  </view>
+
+  <!-- 光芒标签 -->
+  <view class="sel-group">
+    <view class="sel-group-title">✨ 光芒标签</view>
+    <view class="sel-tag-row">
+      <view
+        wx:for="{{lightTags}}"
+        wx:key="*this"
+        class="sel-tag {{item.selected ? 'sel-tag-on' : ''}}"
+        bindtap="onTapTag"
+        data-group="light"
+        data-idx="{{index}}"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 月之标签 -->
+  <view class="sel-group">
+    <view class="sel-group-title">🌙 月之标签</view>
+    <view class="sel-tag-row">
+      <view
+        wx:for="{{natureTags}}"
+        wx:key="*this"
+        class="sel-tag {{item.selected ? 'sel-tag-on' : ''}}"
+        bindtap="onTapTag"
+        data-group="nature"
+        data-idx="{{index}}"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 暗黑标签 -->
+  <view class="sel-group">
+    <view class="sel-group-title">🌑 暗黑标签</view>
+    <view class="sel-tag-row">
+      <view
+        wx:for="{{deepTags}}"
+        wx:key="*this"
+        class="sel-tag {{item.selected ? 'sel-tag-on' : ''}}"
+        bindtap="onTapTag"
+        data-group="deep"
+        data-idx="{{index}}"
+      >{{item.name}}</view>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="sel-submit {{selectedCount >= 5 ? '' : 'sel-submit-disabled'}}" bindtap="onSubmit">
+    {{selectedCount >= 5 ? '🌟 提交星座标签' : '✨ 请再选几个标签吧'}}
+  </view>
+
+  <view class="sel-spacer"></view>
+
+</view>

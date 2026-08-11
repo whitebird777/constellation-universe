@@ -1,0 +1,88 @@
+/** ranking.wxss **/
+
+/* Page */
+.rank-page { justify-content: flex-start; background: radial-gradient(ellipse at 50% 35%,#0E1648 0%,#090F35 35%,#050A20 65%,#03081A 100%); }
+
+/* Atmosphere */
+.rank-bg { position:fixed; top:0; left:0; width:100%; height:100vh; pointer-events:none; z-index:0; overflow:hidden; }
+.bg-galaxy { position:absolute; top:45%; left:50%; width:700rpx; height:700rpx; margin-left:-350rpx; margin-top:-350rpx; border-radius:50%; background:radial-gradient(circle, rgba(100,130,220,0.06) 0%,transparent 45%); animation:galaxyBreath 8s ease-in-out infinite alternate; }
+@keyframes galaxyBreath { 0%{opacity:0.5;transform:scale(0.9);} 100%{opacity:1;transform:scale(1.1);} }
+.bg-nebula { position:absolute; border-radius:50%; opacity:0.7; }
+.bg-nebula-L { top:8%; left:-35%; width:85%; height:60%; background:radial-gradient(ellipse, rgba(90,65,190,0.07) 0%, transparent 62%); animation:nebDrift 24s ease-in-out infinite alternate; }
+.bg-nebula-R { top:35%; right:-30%; width:75%; height:55%; background:radial-gradient(ellipse, rgba(50,85,175,0.06) 0%, transparent 60%); animation:nebDrift 28s ease-in-out infinite alternate-reverse; }
+@keyframes nebDrift { 0%{transform:translate(0,0);} 100%{transform:translate(18rpx,-10rpx);} }
+.bg-star { position:absolute; border-radius:50%; background:#fff; }
+@keyframes starPulse { 0%{opacity:0.1;transform:scale(0.4);} 40%{opacity:1;transform:scale(1.2);} 70%{opacity:0.35;transform:scale(0.8);} 100%{opacity:0.1;transform:scale(0.4);} }
+.bg-dust { position:absolute; border-radius:50%; background:rgba(170,195,235,0.3); }
+@keyframes dustFloat { 0%{opacity:0;transform:translate(0,0);} 20%{opacity:0.5;transform:translate(14rpx,-20rpx);} 45%{opacity:0.15;transform:translate(-10rpx,-48rpx);} 70%{opacity:0.4;transform:translate(-20rpx,-24rpx);} 100%{opacity:0;transform:translate(0,0);} }
+.bg-meteor { position:absolute; top:-80rpx; left:70%; width:2rpx; height:90rpx; background:linear-gradient(180deg,rgba(200,215,255,0.85),transparent); border-radius:1rpx; opacity:0; animation:meteorSlow 22s ease-in infinite; animation-delay:6s; }
+@keyframes meteorSlow { 0%{opacity:0;top:-80rpx;left:70%;transform:rotate(-40deg);} 2.5%{opacity:1;top:80rpx;left:55%;} 5%{opacity:0;top:400rpx;left:5%;transform:rotate(-40deg);} 100%{opacity:0;top:400rpx;left:5%;} }
+
+/* Header */
+.rank-header { text-align:center; flex-shrink:0; padding:60rpx 40rpx 0; }
+
+/* Constellation Cards */
+.const-card {
+  display:flex; align-items:center;
+  background:rgba(255,255,255,0.03); border:1rpx solid rgba(255,255,255,0.06);
+  border-radius:20rpx; padding:20rpx 24rpx; margin-bottom:12rpx;
+  transition:all 0.3s ease;
+}
+.const-card--user {
+  background:rgba(100,120,220,0.08); border:1rpx solid rgba(120,150,240,0.25);
+  box-shadow:0 0 32rpx rgba(100,120,220,0.12);
+  animation:userGlow 4s ease-in-out infinite alternate;
+}
+@keyframes userGlow {
+  0%{box-shadow:0 0 24rpx rgba(100,120,220,0.08);}
+  100%{box-shadow:0 0 40rpx rgba(100,120,220,0.2);}
+}
+.const-card--top { border-color:rgba(200,170,100,0.15); }
+
+/* Rank Badge */
+.const-rank { width:56rpx; text-align:center; flex-shrink:0; }
+.rank-crown { font-size:40rpx; line-height:1; }
+.crown-gold  { text-shadow: 0 0 16rpx rgba(255,200,60,0.7), 0 0 32rpx rgba(255,180,30,0.4); }
+.crown-silver { text-shadow: 0 0 16rpx rgba(255,255,255,0.8), 0 0 32rpx rgba(240,240,250,0.5); opacity:0.9; }
+.crown-bronze { text-shadow: 0 0 16rpx rgba(180,180,190,0.6), 0 0 28rpx rgba(150,150,160,0.35); opacity:0.8; }
+
+.rank-medal { font-size:36rpx; line-height:1; }
+.medal-gold   { text-shadow: 0 0 12rpx rgba(255,200,60,0.6), 0 0 24rpx rgba(255,170,20,0.3); }
+.medal-silver { text-shadow: 0 0 12rpx rgba(200,210,230,0.6), 0 0 24rpx rgba(170,185,200,0.3); opacity:0.9; }
+.medal-bronze { text-shadow: 0 0 12rpx rgba(210,150,80,0.6), 0 0 24rpx rgba(170,110,40,0.3); opacity:0.85; }
+
+.rank-num { font-size:26rpx; font-weight:700; color:rgba(255,255,255,0.3); }
+
+/* Info */
+.const-info { display:flex; align-items:center; flex:1; margin-left:12rpx; }
+.const-icon { font-size:40rpx; margin-right:14rpx; }
+.const-detail { display:flex; flex-direction:column; }
+.const-name { font-size:26rpx; font-weight:600; color:rgba(255,255,255,0.85); }
+.const-level { font-size:18rpx; color:rgba(255,255,255,0.3); margin-top:2rpx; }
+
+/* Stats */
+.const-stats { text-align:right; flex-shrink:0; }
+.const-residents { font-size:20rpx; color:rgba(255,255,255,0.4); }
+.const-starlight { font-size:22rpx; font-weight:600; color:rgba(255,255,255,0.75); margin-top:2rpx; }
+.const-growth { font-size:20rpx; color:rgba(120,220,150,0.7); margin-top:2rpx; }
+.growth-up { color:rgba(120,220,150,0.7); }
+
+/* Slide-in */
+@keyframes cardSlideIn {
+  0%{opacity:0;transform:translateY(20rpx);}
+  100%{opacity:1;transform:translateY(0);}
+}
+
+/* Tab Bar */
+.tab-chip {
+  display:flex; align-items:center; justify-content:center;
+  padding:14rpx 36rpx;
+  background:rgba(255,255,255,0.03); border:1rpx solid rgba(255,255,255,0.06);
+  border-radius:36rpx;
+}
+.tab-active {
+  background:rgba(100,120,220,0.1); border:1rpx solid rgba(120,150,240,0.2);
+  box-shadow:0 0 20rpx rgba(100,120,220,0.08);
+}
+.tab-text { font-size:24rpx; color:rgba(255,255,255,0.45); }
+.tab-active .tab-text { color:rgba(255,255,255,0.8); font-weight:600; }

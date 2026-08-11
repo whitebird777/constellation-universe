@@ -1,0 +1,62 @@
+<!-- match/index.wxml — 星座趣味匹配 V3 -->
+<view class="page-full match-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="match-bg">
+    <view class="bg-nebula bg-nebula--L"></view>
+    <view class="bg-nebula bg-nebula--R"></view>
+    <view wx:for="{{starsBG}}" wx:key="i" class="bg-star" style="{{item.s}}"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- ① 标题 -->
+  <view style="text-align:center;padding-top:90rpx;">
+    <view style="font-size:36rpx;font-weight:600;color:rgba(255,255,255,0.9);">
+      {{myIcon}} {{myConstellation}} × {{partnerIcon}} {{partnerConstellation}}
+    </view>
+    <view class="text-body" style="margin-top:8rpx;">来看看你们的星座趣味互动吧</view>
+  </view>
+
+  <!-- ② 配对选择 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:12rpx;">
+    <picker mode="selector" range="{{names}}" value="{{pickerIndex}}" bindchange="onPickerChange">
+      <view style="display:flex;align-items:center;justify-content:space-between;">
+        <view style="font-size:24rpx;color:rgba(255,255,255,0.45);">请选择另一位星座</view>
+        <view style="font-size:24rpx;color:rgba(180,160,240,0.7);">▼ {{partnerConstellation}}</view>
+      </view>
+    </picker>
+  </view>
+
+  <!-- ③ 趣味契合度 -->
+  <view class="glass-card" style="width:560rpx;text-align:center;padding:22rpx;margin-top:10rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.4);letter-spacing:2rpx;">趣味契合度</view>
+    <view style="font-size:44rpx;color:rgba(180,160,240,0.9);margin-top:8rpx;letter-spacing:4rpx;">{{stars}}</view>
+    <view style="font-size:18rpx;color:rgba(255,255,255,0.2);margin-top:4rpx;">仅供娱乐参考</view>
+  </view>
+
+  <!-- ④ 趣味小维度 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:10rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.35);letter-spacing:2rpx;text-align:center;">趣味小维度</view>
+    <view wx:for="{{dimensions}}" wx:key="label" style="margin-top:16rpx;">
+      <view style="display:flex;align-items:center;margin-bottom:6rpx;">
+        <view style="font-size:28rpx;margin-right:8rpx;">{{item.icon}}</view>
+        <view style="font-size:24rpx;font-weight:600;color:rgba(255,255,255,0.8);">{{item.label}}</view>
+        <view style="font-size:20rpx;color:rgba(180,160,240,0.6);margin-left:8rpx;">{{item.stars}}</view>
+      </view>
+      <view style="font-size:22rpx;color:rgba(255,255,255,0.45);line-height:1.7;margin-top:4rpx;">{{item.tip}}</view>
+    </view>
+  </view>
+
+  <!-- ⑤ 星座关系小贴士 -->
+  <view class="glass-card" style="width:560rpx;padding:22rpx;margin-top:10rpx;">
+    <view style="font-size:22rpx;color:rgba(255,255,255,0.35);letter-spacing:2rpx;text-align:center;">✨ 星座关系小贴士</view>
+    <view style="font-size:24rpx;color:rgba(255,255,255,0.55);margin-top:12rpx;line-height:1.8;">{{analysis}}</view>
+  </view>
+
+  <!-- ⑥ 底部按钮 -->
+  <view style="margin-top:40rpx;padding-bottom:60rpx;">
+    <button wx:if="{{!recorded}}" class="btn-primary" bindtap="onRecord">💞 记录今日匹配</button>
+    <button wx:else class="btn-disabled">✅ 今日已记录</button>
+  </view>
+
+</view>

@@ -1,0 +1,14 @@
+请将 CC0 授权的轻柔宇宙氛围背景音乐文件（.mp3 格式）放入此目录。
+
+文件要求：
+- 文件名：bgm.mp3
+- 格式：MP3
+- 建议大小：< 500KB（控制小程序包体积）
+- 建议时长：30-120 秒（将循环播放）
+- 风格：轻柔宇宙氛围 / ambient space music
+- 授权：CC0 或确认可商用
+
+推荐免费音效网站：
+- pixabay.com/music/
+- mixkit.co/free-stock-music/
+- freesound.org

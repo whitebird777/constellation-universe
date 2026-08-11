@@ -1,0 +1,56 @@
+<!-- pages/zodiac/index.wxml — 星座百科 V2.0 -->
+<view class="zodiac-root" style="padding-top:{{statusBarHeight}}px;">
+
+  <!-- 宇宙背景 -->
+  <view class="zodiac-bg">
+    <view class="zg-nebula zg-nebula-l"></view>
+    <view class="zg-nebula zg-nebula-r"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="zg-star" style="{{item.s}}"></view>
+  </view>
+
+  <!-- ← 返回 -->
+  <view class="zg-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <!-- 标题 -->
+  <view class="zg-header">
+    <view class="zg-title">📖 星座百科</view>
+    <view class="zg-subtitle">探索十二星座，发现星座奥秘</view>
+  </view>
+
+  <!-- 十二星座宫格 -->
+  <view class="zg-grid">
+    <view
+      wx:for="{{zodiacList}}"
+      wx:key="id"
+      class="zg-card-item"
+      bindtap="onTapZodiac"
+      data-id="{{item.id}}"
+      data-name="{{item.name}}"
+    >
+      <view class="zg-card-symbol">{{item.symbol}}</view>
+      <view class="zg-card-name">{{item.name}}</view>
+      <view class="zg-card-date">{{item.date}}</view>
+    </view>
+  </view>
+
+  <!-- ── 星座四象 ── -->
+  <view class="zg-elements-card">
+    <view class="zg-elements-title">🌌 星座四象</view>
+    <view class="zg-element-row" wx:for="{{elementGroups}}" wx:key="name">
+      <view class="zg-element-icon">{{item.icon}}</view>
+      <view class="zg-element-info">
+        <view class="zg-element-name">{{item.name}}</view>
+        <view class="zg-element-signs">{{item.signs}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── 底部探索卡 ── -->
+  <view class="zg-footer-card">
+    <view class="zg-footer-dot">✨</view>
+    <view class="zg-footer-title">星座探索记录</view>
+    <view class="zg-footer-stat">已探索 {{exploredCount}} / 12</view>
+    <view class="zg-footer-hint">点击上方星座卡片，开启星座探索</view>
+  </view>
+
+</view>

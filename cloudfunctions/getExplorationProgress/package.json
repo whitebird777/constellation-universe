@@ -1,0 +1,9 @@
+{
+  "name": "getExplorationProgress",
+  "version": "1.0.0",
+  "description": "星座百科 — 查询用户星座探索进度",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

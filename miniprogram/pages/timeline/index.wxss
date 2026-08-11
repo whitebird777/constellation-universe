@@ -1,0 +1,2 @@
+/**timeline.wxss V3 **/
+.timeline-page { justify-content: flex-start; }

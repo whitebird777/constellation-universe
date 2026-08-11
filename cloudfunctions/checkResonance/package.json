@@ -1,0 +1,9 @@
+{
+  "name": "checkResonance",
+  "version": "1.0.0",
+  "description": "星座共鸣 — 检查用户是否已完成某星座选择",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

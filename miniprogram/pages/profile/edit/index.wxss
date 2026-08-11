@@ -1,0 +1,56 @@
+/** pages/profile/edit/index.wxss — 居民资料完善 **/
+
+.profile-edit-page {
+  justify-content: flex-start;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 35%, #0E1648 0%, #090F35 35%, #03081A 100%);
+}
+
+.text-title { font-size: 38rpx; font-weight: 600; color: rgba(255,255,255,0.9); text-align: center; }
+.text-sub { font-size: 24rpx; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 36rpx; }
+
+/* 头像 */
+.pe-avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 36rpx; }
+.pe-avatar-btn {
+  width: 180rpx; height: 180rpx;
+  border-radius: 50%;
+  background: rgba(100,120,220,0.1);
+  border: 1rpx solid rgba(120,150,240,0.2);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+.pe-avatar-btn::after { border: none; }
+.pe-avatar-img { width: 100%; height: 100%; border-radius: 50%; }
+.pe-avatar-placeholder { font-size: 52rpx; color: rgba(255,255,255,0.12); }
+.pe-avatar-done { font-size: 24rpx; color: rgba(140,220,160,0.65); margin-top: 14rpx; }
+.pe-avatar-hint { font-size: 24rpx; color: rgba(255,255,255,0.25); margin-top: 14rpx; }
+
+/* 昵称 */
+.pe-nickname-section { width: 560rpx; display: flex; flex-direction: column; align-items: center; margin-bottom: 48rpx; }
+.pe-nickname-label { font-size: 24rpx; color: rgba(255,255,255,0.4); margin-bottom: 14rpx; }
+.pe-nickname-input {
+  width: 560rpx; height: 88rpx;
+  background: rgba(100,120,220,0.08);
+  border: 1rpx solid rgba(120,150,240,0.12);
+  border-radius: 16rpx;
+  font-size: 28rpx; color: rgba(255,255,255,0.85);
+  text-align: center; padding: 0 24rpx;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+/* 保存按钮 */
+.pe-submit-btn {
+  width: 480rpx; height: 88rpx;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(100,120,220,0.12);
+  border: 1rpx solid rgba(120,150,240,0.18);
+  border-radius: 44rpx;
+  font-size: 30rpx; color: rgba(180,190,240,0.9);
+  letter-spacing: 4rpx;
+}
+.pe-submit-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}

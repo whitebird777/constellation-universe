@@ -1,0 +1,126 @@
+/**
+ * detail.wxss — 星座档案页
+ */
+
+/* ═══ 根容器 ═══ */
+.detail-root {
+  width: 750rpx; min-height: 100vh; position: relative; overflow-y: auto;
+  background: radial-gradient(ellipse at 50% 25%, #0E1648 0%, #090F35 40%, #03081A 100%);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+/* ═══ 背景 ═══ */
+.dt-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 0; }
+.dt-nebula { position: absolute; border-radius: 50%; }
+.dt-nebula-l { top: 5%; left: -35%; width: 85%; height: 55%; background: radial-gradient(ellipse, rgba(100,80,200,0.06) 0%, transparent 65%); }
+.dt-nebula-r { top: 40%; right: -30%; width: 75%; height: 50%; background: radial-gradient(ellipse, rgba(55,95,180,0.05) 0%, transparent 65%); }
+.dt-star { position: absolute; border-radius: 50%; background: #fff; }
+
+/* ═══ 返回 ═══ */
+.dt-back {
+  position: absolute; left: 28rpx; z-index: 50; top: 0;
+  font-size: 26rpx; color: rgba(255,255,255,0.55);
+  padding: 10rpx 20rpx; background: rgba(0,0,0,0.25); border-radius: 30rpx;
+}
+
+/* ═══ 星座符号光环 ═══ */
+.dt-hero {
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 70rpx; position: relative; z-index: 2;
+}
+.dt-hero-glow {
+  position: absolute; width: 280rpx; height: 280rpx; border-radius: 50%;
+  animation: heroPulse 4s ease-in-out infinite alternate;
+}
+@keyframes heroPulse {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1.08); }
+}
+.dt-hero-symbol {
+  position: relative; z-index: 2;
+  font-size: 120rpx; line-height: 1;
+}
+
+/* ═══ 名称 + 日期 ═══ */
+.dt-header {
+  text-align: center; margin-top: 20rpx;
+  position: relative; z-index: 2;
+}
+.dt-name {
+  font-size: 42rpx; font-weight: 700; color: rgba(255,255,255,0.92);
+  letter-spacing: 8rpx;
+}
+.dt-date {
+  font-size: 24rpx; color: rgba(255,255,255,0.4);
+  margin-top: 8rpx; letter-spacing: 2rpx;
+}
+
+/* ═══ 卡片 ═══ */
+.dt-card {
+  width: 640rpx; padding: 28rpx 30rpx; margin-top: 20rpx;
+  background: rgba(100,125,225,0.05);
+  border: 1rpx solid rgba(140,160,240,0.10);
+  border-radius: 24rpx;
+  position: relative; z-index: 2;
+}
+.dt-card-label {
+  font-size: 18rpx; color: rgba(200,210,255,0.4);
+  letter-spacing: 4rpx; text-align: center; margin-bottom: 20rpx;
+}
+
+/* ── 档案信息 ── */
+.dt-info-grid {
+  display: flex; justify-content: center; gap: 40rpx;
+}
+.dt-info-item { text-align: center; }
+.dt-info-icon { font-size: 36rpx; margin-bottom: 6rpx; }
+.dt-info-val  { font-size: 24rpx; font-weight: 600; color: rgba(255,255,255,0.85); }
+.dt-info-key  { font-size: 18rpx; color: rgba(255,255,255,0.3); margin-top: 4rpx; }
+.dt-guardian {
+  text-align: center; margin-top: 16rpx;
+  font-size: 20rpx; color: rgba(200,180,255,0.4);
+}
+
+/* ── 关键词标签 ── */
+.dt-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12rpx;
+}
+.dt-tag {
+  padding: 8rpx 22rpx; border-radius: 30rpx;
+  background: rgba(140,160,240,0.08);
+  border: 1rpx solid rgba(140,160,240,0.15);
+  font-size: 22rpx; color: rgba(200,210,255,0.75);
+}
+
+/* ── 简介 ── */
+.dt-desc {
+  font-size: 24rpx; color: rgba(255,255,255,0.55);
+  line-height: 1.8; letter-spacing: 1rpx;
+}
+.dt-personality {
+  display: flex; gap: 14rpx; align-items: flex-start;
+  margin-top: 20rpx; padding: 20rpx;
+  border-radius: 16rpx;
+  background: rgba(100,125,225,0.04);
+  border: 1rpx solid rgba(140,160,240,0.06);
+}
+.dt-personality-icon { font-size: 28rpx; flex-shrink: 0; }
+.dt-personality-text {
+  font-size: 22rpx; color: rgba(255,255,255,0.45); line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── 星座共鸣 ── */
+.dt-resonance { padding-bottom: 24rpx; }
+.dt-res-active {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 24rpx 0; border-radius: 16rpx;
+  background: rgba(140,160,240,0.06);
+  border: 1rpx solid rgba(140,160,240,0.12);
+}
+.dt-res-icon-active { font-size: 36rpx; opacity: 0.7; margin-bottom: 10rpx; }
+.dt-res-text-active { font-size: 24rpx; color: #FFD700; letter-spacing: 2rpx; }
+.dt-res-sub  { font-size: 18rpx; color: #FF4D4F; margin-top: 6rpx; }
+
+/* ═══ 底部 ═══ */
+.dt-spacer { height: 60rpx; }

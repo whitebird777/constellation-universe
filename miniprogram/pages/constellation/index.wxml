@@ -1,0 +1,28 @@
+<!--constellation.wxml V3 -->
+<view class="page-full constellation-page" style="padding-top:{{statusBarHeight}}px;">
+
+  <view class="universe-atmosphere">
+    <view class="atmo-glow" style="top:30%;width:600rpx;height:600rpx;background:radial-gradient(circle, rgba(140,160,240,0.15) 0%, rgba(100,120,200,0.06) 40%, transparent 70%);"></view>
+    <view class="atmo-nebula-right"></view>
+    <view wx:for="{{stars}}" wx:key="i" class="atmo-star" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view wx:for="{{dust}}" wx:key="i" class="atmo-dust" style="top:{{item.t}};left:{{item.l}};width:{{item.w}};height:{{item.h}};--dur:{{item.d}}s;--delay:{{item.y}}s;"></view>
+    <view class="atmo-meteor"></view>
+    <view class="atmo-meteor-fast"></view>
+  </view>
+
+  <view class="nav-back" style="top:{{statusBarHeight}}px;" bindtap="onBack">← 返回</view>
+
+  <view wx:if="{{loading}}" style="text-align:center;margin-top:42vh;">
+    <view class="text-subtitle">正在解析你的星空……</view>
+  </view>
+
+  <view wx:else style="text-align:center;margin-top:18vh;">
+    <view style="font-size:160rpx;text-shadow:0 0 100rpx rgba(160,180,255,0.5);line-height:1;animation:glowBreath 4s ease-in-out infinite;">{{icon}}</view>
+    <view class="text-hero" style="margin-top:20rpx;">{{name}}</view>
+    <view class="text-body" style="margin-top:8rpx;">一颗属于你的星球正在诞生</view>
+    <view style="margin-top:48rpx;">
+      <button class="btn-primary" bindtap="onEnter">成为星球主人</button>
+    </view>
+  </view>
+
+</view>
